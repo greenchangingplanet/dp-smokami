@@ -117,7 +117,7 @@ a {
 /* Klasa dodawana przez JS po przewinięciu strony w dół */
 .site-header.scrolled {
   position: fixed;
-  background-color: rgba(30, 30, 30, 0.95);
+  background-color: rgba(255, 255, 255, 0.5); /* Białe, półprzezroczyste tło */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -125,14 +125,14 @@ a {
   display: flex;
   justify-content: space-between; /* Rozsuwa elementy na boki */
   align-items: center;
-  padding: 1.5rem 5%;
+  padding: 1.5rem 5%; /* Oryginalny, wyjściowy odstęp */
   max-width: 1400px;
   margin: 0 auto;
   position: relative; /* Baza do idealnego wycentrowania logo względem całego paska */
 }
 
 .site-header.scrolled .site-header-inner {
-  padding: 1rem 5%;
+  padding: 1rem 5%; /* Oryginalny odstęp po przewinięciu */
 }
 
 /* Wypozycjonowanie logo dokładnie na środku nagłówka */
@@ -145,7 +145,7 @@ a {
 }
 
 .brand .logo {
-  height: 60px;
+  height: 180px; /* Logo powiększone 3x na początku strony */
   width: auto;
   transition: var(--transition-smooth);
   display: block;
@@ -153,7 +153,7 @@ a {
 }
 
 .site-header.scrolled .brand .logo {
-  height: 45px;
+  height: 45px; /* Po przewinięciu wraca do oryginalnego, mniejszego rozmiaru */
 }
 
 /* Przesunięcie menu na prawą stronę, żeby nie nachodziło na logo */
@@ -173,9 +173,18 @@ a {
   font-size: 0.9rem;
   color: var(--color-text-light);
   letter-spacing: 1px;
+  transition: var(--transition-smooth);
 }
 
 .site-nav a:hover {
+  color: var(--color-accent);
+}
+
+/* Zmiana koloru linków na ciemny po przewinięciu (dla czytelności na białym tle) */
+.site-header.scrolled .site-nav a {
+  color: #333333;
+}
+.site-header.scrolled .site-nav a:hover {
   color: var(--color-accent);
 }
 
@@ -196,6 +205,13 @@ a {
   background-color: var(--color-text-light);
   position: relative;
   transition: var(--transition-fast);
+}
+
+/* Zmiana koloru hamburgera na ciemny po przewinięciu */
+.site-header.scrolled .hamburger,
+.site-header.scrolled .hamburger::before,
+.site-header.scrolled .hamburger::after {
+  background-color: #333333;
 }
 
 .hamburger::before,
