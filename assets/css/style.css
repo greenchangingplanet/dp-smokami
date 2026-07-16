@@ -119,24 +119,27 @@ a {
   opacity: 0;
 }
 
-/* Pasek menu po przewinięciu z super-płynnym gradientem (gradient easing) */
+/* Pasek menu jako delikatna mgła po przewinięciu */
 .site-header.scrolled {
   position: fixed;
-  box-shadow: none !important; /* Brak ostrego cienia */
+  box-shadow: none !important; /* Całkowity brak cienia, żeby zachować lekkość */
   
-  /* Super-płynny gradient z wieloma punktami przejścia */
+  /* Ultra-delikatny gradient: zaczyna się od subtelnej mgły, kończy zaraz za menu */
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.98) 0%,
-    rgba(255, 255, 255, 0.92) 20%,
-    rgba(255, 255, 255, 0.80) 40%,
-    rgba(255, 255, 255, 0.60) 60%,
-    rgba(255, 255, 255, 0.35) 80%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(26, 32, 44, 0.4) 0%,     /* Delikatna ciemna mgła dopasowana do tła #1A202C */
+    rgba(26, 32, 44, 0.15) 50%,   /* Szybkie zanikanie */
+    rgba(26, 32, 44, 0) 100%      /* Całkowite rozpuszczenie na wysokości dolnej granicy menu */
   ) !important;
   
-  /* Rozmycie tła również dopasowuje się do gradientu w nowoczesnych przeglądarkach */
-  backdrop-filter: blur(10px); 
+  /* Efekt rozmycia szkła (blur) - to on tworzy efekt "mgły" nad zdjęciem tła */
+  backdrop-filter: blur(6px) !important; 
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+
+/* Dopasowanie marginesów, żeby gradient kończył się idealnie pod menu */
+.site-header.scrolled .site-header-inner {
+  padding: 0.6rem 5% 1.2rem 5% !important; /* Bardzo wąski pasek, gradient ucina się szybko */
 }
 
 .site-header-inner {
