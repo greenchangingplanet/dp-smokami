@@ -32,10 +32,16 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-bg) !important; /* Twój nowy, ciemny motyw #1A202C */
+  /* Bardzo ładny, czytelny i nowoczesny zestaw czcionek bezszeryfowych */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  background-color: var(--color-bg) !important; /* Ciemny motyw #1A202C */
   color: var(--color-text) !important;         /* Jasny tekst #F7FAFC */
-  line-height: 1.6; /* Warto dodać dla lepszej czytelności tekstów */
+  line-height: 1.6;
+}
+
+/* Przywrócenie czcionki dla wszystkich nagłówków na stronie */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title) !important; /* Wymuszenie czcionki tytułowej */
 }
 
 img {
