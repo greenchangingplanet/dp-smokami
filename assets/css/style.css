@@ -39,6 +39,11 @@ body {
   line-height: 1.6;
 }
 
+/* Tradycyjna, elegancka czcionka dla wszystkich nagłówków i sekcji Hero */
+h1, h2, h3, h4, h5, h6, .hero-content h1, .hero-content .hero-lead {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif !important;
+}
+
 /* Przywrócenie czcionki dla wszystkich nagłówków na stronie */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-title) !important; /* Wymuszenie czcionki tytułowej */
