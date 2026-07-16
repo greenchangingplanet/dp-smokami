@@ -778,3 +778,28 @@ a {
 .site-title {
   display: none !important;
 }
+
+/* Styl dla wielkiego logo wyświetlanego na środku ekranu głównego (Hero) */
+.hero-logo-wrapper {
+  margin-bottom: 2.5rem; /* Odstęp między logiem a napisem TWÓJ DOM W GÓRACH */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-logo {
+  height: 180px; /* Twoja wymarzona, trzykrotna wielkość */
+  width: auto;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3)); /* Lekki cień, by logo było super czytelne na każdym tle */
+  display: block;
+}
+
+/* Dostosowanie wielkości logo na mniejszych ekranach telefonów */
+@media (max-width: 768px) {
+  .hero-logo {
+    height: 120px; /* Na telefonie delikatnie je zmniejszamy, żeby nie zajęło całego ekranu */
+  }
+  .hero-logo-wrapper {
+    margin-bottom: 1.5rem;
+  }
+}
