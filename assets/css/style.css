@@ -123,25 +123,42 @@ a {
 
 .site-header-inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Rozsuwa elementy na boki */
   align-items: center;
   padding: 1.5rem 5%;
   max-width: 1400px;
   margin: 0 auto;
+  position: relative; /* Baza do idealnego wycentrowania logo względem całego paska */
 }
 
 .site-header.scrolled .site-header-inner {
   padding: 1rem 5%;
 }
 
+/* Wypozycjonowanie logo dokładnie na środku nagłówka */
+.brand {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1010; /* Trzyma logo zawsze na wierzchu */
+}
+
 .brand .logo {
   height: 60px;
   width: auto;
   transition: var(--transition-smooth);
+  display: block;
+  margin: 0 auto;
 }
 
 .site-header.scrolled .brand .logo {
   height: 45px;
+}
+
+/* Przesunięcie menu na prawą stronę, żeby nie nachodziło na logo */
+.site-nav {
+  margin-left: auto;
 }
 
 .site-nav ul {
@@ -169,6 +186,7 @@ a {
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  z-index: 1020; /* Trzyma przycisk nad innymi elementami na telefonie */
 }
 
 .hamburger {
