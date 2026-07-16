@@ -145,7 +145,7 @@ a {
 }
 
 .brand .logo {
-  height: 120px;
+  height: 60px;
   width: auto;
   transition: var(--transition-smooth);
   display: block;
