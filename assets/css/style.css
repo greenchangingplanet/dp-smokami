@@ -112,68 +112,59 @@ a {
   z-index: 1000;
   background: transparent;
   transition: var(--transition-smooth);
-  overflow: visible !important; /* Blokuje jakiekolwiek ucinanie elementów */
-  min-height: 220px; /* Gwarantuje ogromną przestrzeń w pionie na starcie dla dużego logo */
 }
 
-/* Ukrycie automatycznego napisu/tytułu, który wstrzykuje motyw Jekylla */
-.site-header .site-title,
-.site-header span,
-.site-header .site-brand {
+/* KIEDY STRONA JEST NA SAMEJ GÓRZE: ukrywamy problematyczne elementy z paska */
+.site-header:not(.scrolled) .brand,
+.site-header:not(.scrolled) .site-title,
+.site-header:not(.scrolled) span,
+.site-header:not(.scrolled) .site-brand {
   display: none !important;
+  opacity: 0;
 }
 
-/* Klasa dodawana przez JS po przewinięciu strony w dół */
+/* PO PRZEWINIĘCIU STRONY W DÓŁ: wysuwa się elegancki, czysty biały pasek nawigacji */
 .site-header.scrolled {
   position: fixed;
-  min-height: auto; /* Po przewinięciu pasek wraca do kompaktowych rozmiarów */
-  background-color: rgba(255, 255, 255, 0.5); /* Białe, półprzezroczyste tło */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.7); /* Eleganckie, półprzezroczyste białe tło */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px); /* Modny efekt rozmycia tła za paskiem */
 }
 
 .site-header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 5%;
+  padding: 1.5rem 5%;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
-  overflow: visible !important;
 }
 
 .site-header.scrolled .site-header-inner {
-  padding: 1rem 5%;
+  padding: 0.8rem 5%;
 }
 
-/* Wypozycjonowanie logo dokładnie na środku nagłówka */
-.brand, 
-.site-header a[href*="index.html"],
-.site-header .site-home {
+/* Logo po przewinięciu – idealnie wycentrowane i bezpieczne */
+.site-header.scrolled .brand {
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
   transform: translate(-50%, -50%) !important;
   z-index: 1010;
-  display: block !important; /* Upewniamy się, że sam link z logo jest widoczny */
-}
-
-.brand .logo,
-.site-header img {
-  height: 180px !important; /* Sztywna wysokość 3x na starcie strony */
-  width: auto !important;
-  transition: var(--transition-smooth);
   display: block !important;
-  margin: 0 auto;
-  max-height: none !important;
+  opacity: 1 !important;
 }
 
 .site-header.scrolled .brand .logo,
 .site-header.scrolled img {
-  height: 45px !important; /* Po przewinięciu zgrabny, mniejszy rozmiar */
+  height: 45px !important; /* Zgrabny, mniejszy rozmiar w pasku */
+  width: auto !important;
+  display: block !important;
+  margin: 0 auto;
 }
 
-/* Przesunięcie menu na prawą stronę */
+/* Wyrównanie menu do prawej strony */
 .site-nav {
   margin-left: auto;
 }
@@ -188,7 +179,7 @@ a {
   font-family: var(--font-title);
   font-weight: 600;
   font-size: 0.9rem;
-  color: var(--color-text-light);
+  color: var(--color-text-light); /* Jasne linki na tle sekcji Hero */
   letter-spacing: 1px;
   transition: var(--transition-smooth);
 }
@@ -197,7 +188,7 @@ a {
   color: var(--color-accent);
 }
 
-/* Zmiana koloru linków na ciemny po przewinięciu */
+/* Zmiana koloru linków na ciemny po przewinięciu, by były czytelne na białym pasku */
 .site-header.scrolled .site-nav a {
   color: #333333;
 }
@@ -205,7 +196,7 @@ a {
   color: var(--color-accent);
 }
 
-/* Hamburger (Mobile Menu Toggle) */
+/* Hamburger dla wersji mobilnej */
 .nav-toggle {
   display: none;
   background: transparent;
@@ -224,7 +215,7 @@ a {
   transition: var(--transition-fast);
 }
 
-/* Zmiana koloru hamburgera na ciemny po przewinięciu */
+/* Ciemny hamburger po przewinięciu strony */
 .site-header.scrolled .hamburger,
 .site-header.scrolled .hamburger::before,
 .site-header.scrolled .hamburger::after {
