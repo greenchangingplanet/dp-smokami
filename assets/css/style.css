@@ -455,6 +455,16 @@ a {
   background: var(--color-accent) !important;
 }
 
+/* Wypchnięcie elementów sterujących slidera nad niewidoczne tło nagłówka */
+.carousel-control-prev,
+.carousel-control-next,
+.slider-arrow,
+.swiper-button-next,
+.swiper-button-prev {
+  z-index: 1020 !important; /* Wyższa wartość niż 1000 z nagłówka */
+  cursor: pointer !important;
+}
+
 /* ==========================================================================
    6. PARALAKSA I ŚWIETNA LOKALIZACJA
    ========================================================================== */
