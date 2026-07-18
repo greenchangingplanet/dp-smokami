@@ -455,14 +455,61 @@ a {
   background: var(--color-accent) !important;
 }
 
-/* Wypchnięcie elementów sterujących slidera nad niewidoczne tło nagłówka */
+/* ==========================================================================
+   LIFTING I NAPRAWA GUZIKÓW SLIDERA (4x większe strzałki, brak tła)
+   ========================================================================== */
+
+/* 1. Reset kontenerów guzików i wymuszenie ich klikalności */
 .carousel-control-prev,
 .carousel-control-next,
 .slider-arrow,
 .swiper-button-next,
 .swiper-button-prev {
-  z-index: 1020 !important; /* Wyższa wartość niż 1000 z nagłówka */
+  z-index: 1020 !important; /* Wypychamy nad mgiełkę nagłówka */
+  background: transparent !important; /* Całkowite usunięcie tła */
+  background-image: none !important;
+  border: none !important;
+  opacity: 0.75 !important; /* Lekka przezroczystość na starcie dla elegancji */
   cursor: pointer !important;
+  pointer-events: auto !important; /* Wymuszenie reakcji na kliknięcie */
+  width: 80px !important; /* Większy obszar do klikania */
+  height: 80px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important; /* Idealne centrowanie w pionie */
+  transition: all 0.3s ease !important;
+}
+
+/* Płynne podświetlenie całego elementu po najechaniu */
+.carousel-control-prev:hover,
+.carousel-control-next:hover,
+.slider-arrow:hover,
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 1 !important;
+}
+
+/* 2. Czterokrotne powiększenie samych ikon strzałek i zmiana koloru */
+.carousel-control-prev-icon,
+.carousel-control-next-icon,
+.slider-arrow i,
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  width: 4rem !important;  /* 4x większe niż standardowe ~1rem */
+  height: 4rem !important;
+  font-size: 4rem !important; /* Dla strzałek opartych na ikonach czcionkowych */
+  background-size: 100% 100% !important;
+  color: #F7FAFC !important; /* Jasna biel z naszego ciemnego motywu */
+  transition: color 0.3s ease !important;
+}
+
+/* 3. Złoty akcent na same strzałki po najechaniu myszką */
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon,
+.slider-arrow:hover i,
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after {
+  color: var(--color-accent) !important; /* Złoty hover pasujący do menu */
+  filter: drop-shadow(0 0 8px rgba(214, 158, 46, 0.4)); /* Delikatna, złota poświata */
 }
 
 /* ==========================================================================
