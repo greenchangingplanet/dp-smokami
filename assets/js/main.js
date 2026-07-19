@@ -26,19 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (parallaxBg && window.innerWidth > 768) {
     window.addEventListener('scroll', () => {
       let scrollPosition = window.pageYOffset;
-      // Przesuwamy obrazek wolniej niż przewija się strona
       parallaxBg.style.transform = 'translateY(' + (scrollPosition * 0.1) + 'px)';
     });
   }
 
-  // ==========================================================================
   // 4. INICJACJA KARUZELI UDOGODNIEŃ (Swiper.js)
-  // ==========================================================================
   if (document.querySelector('.swiper-amenities')) {
     new Swiper('.swiper-amenities', {
-      loop: true,                 // Karuzela kręci się w kółko
-      slidesPerView: 1,           // Jeden slajd widoczny na raz (nasz podział 50/50)
-      spaceBetween: 0,            // Brak szpar między slajdami
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 0,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -49,26 +46,4 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     });
   }
-
- // ==========================================================================
-  // 5. INICJACJA GŁÓWNEJ KARUZELI APARTAMENTÓW (Wsparcie dla Swiper i Bootstrap)
-  // ==========================================================================
-  // Wersja A: Jeśli to Swiper
-  if (document.querySelector('.hero-slider')) {
-    new Swiper('.hero-slider', {
-      loop: true,
-      navigation: {
-        nextEl: '.carousel-control-next',
-        prevEl: '.carousel-control-prev',
-      },
-    });
-  }
-  
-  // Wersja B: Jeśli to standardowa karuzela (np. Bootstrap)
-  const mainCarouselEl = document.querySelector('.carousel');
-  if (mainCarouselEl && typeof bootstrap !== 'undefined') {
-    new bootstrap.Carousel(mainCarouselEl, {
-      interval: 5000,
-      ride: 'carousel'
-    });
-  }
+});
