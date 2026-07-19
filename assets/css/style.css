@@ -970,31 +970,6 @@ a {
 }
 
 /* ==========================================================================
-   BEZWZGLĘDNE WYCENTROWANIE TEKSTU APARTAMENTÓW
-   ========================================================================== */
-.hero .hero-content,
-.hero-slider .hero-content,
-.carousel-caption,
-.slider-content-inner {
-  position: absolute !important;
-  left: 50% !important;                  
-  top: 50% !important;                   
-  transform: translate(-50%, -50%) !important; 
-  width: 90% !important;                 
-  max-width: 700px !important;           
-  margin: 0 auto !important;
-  text-align: center !important;         
-  right: auto !important;                
-}
-
-.hero-content h1, .hero-content p, .hero-content a,
-.carousel-caption h1, .carousel-caption p, .carousel-caption a {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* ==========================================================================
    1. DOPASOWANIE SEKCJI UDOGODNIEŃ (Ściśnięcie zawartości i tło strony)
    ========================================================================== */
 
@@ -1026,3 +1001,87 @@ a {
   background-color: var(--color-bg, #F7FAFC) !important; /* Wpisz swój kolor strony, np. #f4f4f4 jeśli jest inny */
 }
 
+/* ==========================================================================
+   1. DOPASOWANIE SEKCJI UDOGODNIEŃ (Ściśnięcie zawartości i przezroczyste tło)
+   ========================================================================== */
+.swiper-slide.amenity-slide {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  justify-content: center !important;
+  gap: 40px !important;
+  width: 100% !important;
+}
+
+.amenity-slide .amenity-content {
+  flex: 0 0 35% !important;
+  width: 35% !important;
+  padding: 20px !important;
+  text-align: left !important;
+}
+
+.amenity-slide .amenity-content h3 { margin-bottom: 15px !important; }
+.amenity-slide .amenity-content p { margin-bottom: 25px !important; color: #555555 !important; }
+
+.amenity-slide .amenity-img {
+  flex: 0 0 40% !important;
+  width: 40% !important;
+  height: 100% !important;
+  min-height: 400px !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 4px !important;
+}
+
+.amenities-section {
+  background-color: var(--color-bg, #F7FAFC) !important;
+}
+
+@media (max-width: 768px) {
+  .swiper-slide.amenity-slide { flex-direction: column !important; }
+  .amenity-slide .amenity-content, .amenity-slide .amenity-img { flex: 0 0 100% !important; width: 100% !important; padding: 20px !important; }
+  .amenity-slide .amenity-img { min-height: 250px !important; }
+}
+
+/* ==========================================================================
+   2. PRECYZYJNE CENTROWANIE TEKSTU TYLKO W SEKCJI APARTAMENTÓW
+   ========================================================================== */
+.swiper-slide.apartment-slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative !important;
+}
+
+.apartment-slide .slide-content {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 90% !important;
+  max-width: 650px !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  z-index: 10 !important;
+}
+
+.apartment-slide .slide-content h3,
+.apartment-slide .slide-content p,
+.apartment-slide .slide-content .btn-slide {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.apartment-slide .apt-details {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 15px auto !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 20px !important;
+}
