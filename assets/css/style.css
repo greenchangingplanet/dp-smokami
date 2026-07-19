@@ -1162,38 +1162,103 @@ a {
   width: 100% !important;
 }
 
-/* --- 6. SEKCJA POZNAJ NAS BLIŻEJ (Układ 50/50: Linki po lewej, Obrazek po prawej) --- */
-.about-us-section .container,
-.meet-us-section .container {
+/* ==========================================================================
+   SEKCJA POZNAJ NAS BLIŻEJ (UKŁAD OBAK SIEBIE: LINKI LEWA / FOTO PRAWA)
+   ========================================================================== */
+.info-links-section {
+  padding: 80px 0 !important;
+  background-color: var(--color-bg, #F7FAFC) !important;
+}
+
+/* Kontener staje się elastycznym pudełkiem dzielącym przestrzeń na pół */
+.info-links-section .container {
   display: flex !important;
   flex-wrap: wrap !important;
   align-items: center !important;
   justify-content: space-between !important;
-  gap: 30px !important;
+  gap: 40px !important;
 }
-/* Lewa strona (Tekst/Linki) */
-.about-us-left {
+
+/* Lewa strona - Tytuł i bloki linków */
+.info-links-left {
   flex: 0 0 48% !important;
   width: 48% !important;
+}
+
+.info-links-left .section-title {
+  text-align: left !important;
+  margin-bottom: 30px !important;
+}
+
+/* Układ linków jeden pod drugim, wyrównany do lewej */
+.info-links {
   display: flex !important;
   flex-direction: column !important;
-  align-items: flex-start !important; /* Wyrównanie linków do lewej krawędzi */
+  gap: 25px !important;
 }
-/* Prawa strona (Obrazek placeholder) */
-.about-us-right {
+
+/* Styl pojedynczego linku z numerem */
+.info-link {
+  display: flex !important;
+  align-items: center !important; /* Numer i tekst w jednej linii */
+  gap: 20px !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* Styl wielkich cyfr */
+.info-link-num {
+  font-size: 3rem !important;
+  font-weight: 300 !important;
+  line-height: 1 !important;
+  color: var(--color-accent, #d69e2e) !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.3s ease, transform 0.3s ease !important;
+}
+
+/* Styl tekstu obok cyfry */
+.info-link-text {
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.5px !important;
+  position: relative !important;
+}
+
+/* Prawa strona - Zdjęcie */
+.info-links-right {
   flex: 0 0 48% !important;
   width: 48% !important;
 }
-.about-us-right img {
+
+.info-about-img {
   width: 100% !important;
   height: auto !important;
+  max-height: 450px !important;
   object-fit: cover !important;
   border-radius: 4px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
 }
-/* Responsywność dla telefonów - na małych ekranach układ zjedzie jeden pod drugi */
+
+/* Efekt najechania myszką (Hover) */
+.info-link:hover {
+  transform: translateX(8px) !important; /* Delikatne wysunięcie w prawo */
+}
+.info-link:hover .info-link-num {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+/* Responsywność: Na telefonach zdjęcie wskakuje pod spód, a tekst się centruje */
 @media (max-width: 768px) {
-  .about-us-left, .about-us-right {
+  .info-links-left, .info-links-right {
     flex: 0 0 100% !important;
     width: 100% !important;
+  }
+  .info-links-left .section-title {
+    text-align: center !important;
+  }
+  .info-link {
+    justify-content: center !important;
   }
 }
