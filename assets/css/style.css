@@ -1046,7 +1046,7 @@ a {
 }
 
 /* ==========================================================================
-   2. PRECYZYJNE CENTROWANIE TEKSTU TYLKO W SEKCJI APARTAMENTÓW
+   2. PRECYZYJNE CENTROWANIE TEKSTU TYLKO W SEKCJI APARTAMENTÓW (Tekst od lewej)
    ========================================================================== */
 .swiper-slide.apartment-slide {
   display: flex !important;
@@ -1063,25 +1063,35 @@ a {
   width: 90% !important;
   max-width: 650px !important;
   margin: 0 auto !important;
-  text-align: center !important;
+  text-align: left !important;          /* KAŻDA LINIJKA ZACZYNA SIĘ OD LEWEJ */
   box-sizing: border-box !important;
   z-index: 10 !important;
 }
 
+/* Nagłówek i akapit dziedziczą wyrównanie do lewej strony */
 .apartment-slide .slide-content h3,
-.apartment-slide .slide-content p,
-.apartment-slide .slide-content .btn-slide {
-  text-align: center !important;
-  margin-left: auto !important;
+.apartment-slide .slide-content p {
+  text-align: left !important;
+  margin-left: 0 !important;
   margin-right: auto !important;
 }
 
+/* Przycisk "Zobacz więcej" zostawiamy na środku pod tekstem, żeby dobrze wyglądał */
+.apartment-slide .slide-content .btn-slide {
+  display: inline-block !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 20px !important;
+}
+
+/* Szczegóły apartamentu (wielkość, osoby) – trzymamy na środku w jednej linii */
 .apartment-slide .apt-details {
   list-style: none !important;
   padding: 0 !important;
   margin: 15px auto !important;
   display: flex !important;
   flex-wrap: wrap !important;
-  justify-content: center !important;
+  justify-content: flex-start !important; /* Detale też zaczną się od lewej pod nagłówkiem */
   gap: 20px !important;
 }
