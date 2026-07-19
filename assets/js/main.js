@@ -30,4 +30,37 @@ document.addEventListener('DOMContentLoaded', () => {
       parallaxBg.style.transform = 'translateY(' + (scrollPosition * 0.1) + 'px)';
     });
   }
+
+  // ==========================================================================
+  // 4. INICJACJA KARUZELI UDOGODNIEŃ (Swiper.js)
+  // ==========================================================================
+  if (document.querySelector('.swiper-amenities')) {
+    new Swiper('.swiper-amenities', {
+      loop: true,                 // Karuzela kręci się w kółko
+      slidesPerView: 1,           // Jeden slajd widoczny na raz (nasz podział 50/50)
+      spaceBetween: 0,            // Brak szpar między slajdami
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  }
+
+  // ==========================================================================
+  // 5. INICJACJA GŁÓWNEJ KARUZELI APARTAMENTÓW (Bootstrap lub Swiper)
+  // ==========================================================================
+  // Jeśli główny slider u góry też jest zbudowany na Swiperze:
+  if (document.querySelector('.hero-slider')) {
+    new Swiper('.hero-slider', {
+      loop: true,
+      navigation: {
+        nextEl: '.carousel-control-next',
+        prevEl: '.carousel-control-prev',
+      },
+    });
+  }
 });
