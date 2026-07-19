@@ -1031,3 +1031,65 @@ a {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+/* ==========================================================================
+   1. DOPASOWANIE SEKCJI UDOGODNIEŃ (Ściśnięcie zawartości i tło strony)
+   ========================================================================== */
+
+/* Zmiana tła całego slajdu na przezroczyste, by pokazać kolor strony */
+.swiper-slide.amenity-slide {
+  background-color: transparent !important; /* Usunięcie bieli, pokazuje kolor strony */
+  background: transparent !important;
+  justify-content: center !important;       /* Przyciąganie zawartości do środka */
+  gap: 40px !important;                     /* Odstęp między tekstem a zdjęciem */
+}
+
+/* Ściśnięcie samego bloku tekstu */
+.amenity-slide .amenity-content {
+  flex: 0 0 35% !important;                 /* Zmniejszamy z 45% do 35% (zwężenie) */
+  width: 35% !important;
+  padding: 20px !important;                 /* Mniejszy padding wewnętrzny */
+}
+
+/* Ściśnięcie zdjęcia */
+.amenity-slide .amenity-img {
+  flex: 0 0 40% !important;                 /* Zmniejszamy z 50% do 40% (zwężenie) */
+  width: 40% !important;
+  min-height: 400px !important;
+  border-radius: 4px !important;            /* Opcjonalnie: delikatne zaokrąglenie krawędzi zdjęcia */
+}
+
+/* Upewniamy się, że cała sekcja ma kolor tła taki jak strona */
+.amenities-section {
+  background-color: var(--color-bg, #F7FAFC) !important; /* Wpisz swój kolor strony, np. #f4f4f4 jeśli jest inny */
+}
+
+
+/* ==========================================================================
+   2. BEZPIECZNE PRZESUNIĘCIE TEKSTU APARTAMENTÓW DO ŚRODKA
+   ========================================================================== */
+
+/* Zamiast zmieniać pozycję (absolute/relative), używamy gigantycznych 
+   marginesów bocznych (paddingu) dla całego głównego kontenera slidera. 
+   To fizycznie zepchnie tekst z lewej krawędzi bliżej środka. */
+
+.hero, 
+.hero-slider,
+.carousel-inner {
+  padding-left: 15% !important;   /* Pcha tekst z lewej strony do środka */
+  padding-right: 15% !important;  /* Zabezpiecza prawą stronę przed strzałką */
+  box-sizing: border-box !important;
+}
+
+/* Wymuszenie na samym tekście braku sztywnych szerokości, by dopasował się do nowego środka */
+.hero-content,
+.carousel-caption,
+.slider-content-inner {
+  width: 100% !important;
+  max-width: 650px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  left: 0 !important;
+  right: 0 !important;
+}
