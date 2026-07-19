@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+ // ==========================================================================
+  // 5. INICJACJA GŁÓWNEJ KARUZELI APARTAMENTÓW (Wsparcie dla Swiper i Bootstrap)
   // ==========================================================================
-  // 5. INICJACJA GŁÓWNEJ KARUZELI APARTAMENTÓW (Bootstrap lub Swiper)
-  // ==========================================================================
-  // Jeśli główny slider u góry też jest zbudowany na Swiperze:
+  // Wersja A: Jeśli to Swiper
   if (document.querySelector('.hero-slider')) {
     new Swiper('.hero-slider', {
       loop: true,
@@ -63,4 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     });
   }
-});
+  
+  // Wersja B: Jeśli to standardowa karuzela (np. Bootstrap)
+  const mainCarouselEl = document.querySelector('.carousel');
+  if (mainCarouselEl && typeof bootstrap !== 'undefined') {
+    new bootstrap.Carousel(mainCarouselEl, {
+      interval: 5000,
+      ride: 'carousel'
+    });
+  }
