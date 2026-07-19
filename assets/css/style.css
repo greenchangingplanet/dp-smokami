@@ -20,7 +20,8 @@
   --bs-breakpoint-xxl: 1400px;
 }
 
-* {
+/* BEZPIECZNY RESET - nie rusza elementów karuzeli i przycisków */
+*:not(.carousel-control-prev):not(.carousel-control-next):not(.carousel-control-prev-icon):not(.carousel-control-next-icon):not(.carousel-item) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -454,40 +455,57 @@ a {
 .swiper-pagination-bullet-active {
   background: var(--color-accent) !important;
 }
-
 /* ==========================================================================
-   PERFEKCYJNE WYCENTROWANIE I NAPRAWA DIZALANIA GIGANTYCZNYCH STRZAŁEK
+   NAWY I DOPASOWANY KOD DLA HERO I STRZAŁEK
    ========================================================================== */
 
-/* 1. Ręczne wymuszenie pozycji i strefy klikania na środku sekcji Hero */
+/* 1. Zwężenie i centrowanie opisu w Hero */
+.hero-content {
+  max-width: 750px !important;  /* Mocne zwężenie, by tekst był na środku */
+  margin: 0 auto !important;    /* Wycentrowanie całego bloku w poziomie */
+  padding-left: 30px !important; 
+  padding-right: 30px !important;
+  text-align: center !important; /* Wycentrowanie samych linijek tekstu */
+  position: relative !important;
+  z-index: 1010 !important;     /* Tekst siedzi pod warstwą strzałek (1020) */
+  bottom: auto !important;
+  top: auto !important;
+}
+
+/* Upewniamy się, że nagłówek i opis trzymają się środka */
+.hero-content h1,
+.hero-content .hero-lead {
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 2. Gigantyczne strzałki - perfekcyjne centrowanie i odblokowanie kliku */
 .carousel-control-prev,
 .carousel-control-next,
 .slider-arrow,
 .swiper-button-next,
 .swiper-button-prev {
   position: absolute !important;
-  top: 50% !important; /* Przesunięcie o połowę wysokości sekcji w dół */
-  transform: translateY(-50%) !important; /* Idealne wycentrowanie w pionie */
-  bottom: auto !important; /* Kasujemy uciekanie do góry/dołu */
-  
+  top: 0 !important;
+  bottom: 0 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   
-  width: 100px !important;  /* Stała, szeroka i bezpieczna strefa kliku */
-  height: 120px !important; /* Wysoki obszar, żeby łatwo trafić palcem/myszką */
+  width: 140px !important;  /* Bardzo szeroka i bezpieczna strefa kliku */
   background: transparent !important;
   border: none !important;
-  opacity: 0.6 !important;
-  z-index: 1020 !important;
+  opacity: 0.65 !important; /* Delikatne, by nie zasłaniały zdjęć */
+  z-index: 1020 !important; /* Zawsze nad tekstem opisów */
   cursor: pointer !important;
-  pointer-events: auto !important; /* Wymuszenie reakcji na kliknięcie */
-  transition: opacity 0.3s ease !important;
+  pointer-events: auto !important; /* Wymuszenie klikalności */
+  transition: opacity 0.3s ease, color 0.3s ease !important;
 }
 
-/* Dokładne przyklejenie do lewej i prawej krawędzi ekranu */
-.carousel-control-prev, .slider-arrow-left, .swiper-button-prev { left: 2% !important; }
-.carousel-control-next, .slider-arrow-right, .swiper-button-next { right: 2% !important; }
+/* Przyklejenie do lewej i prawej krawędzi ekranu */
+.carousel-control-prev, .slider-arrow-left, .swiper-button-prev { left: 0 !important; }
+.carousel-control-next, .slider-arrow-right, .swiper-button-next { right: 0 !important; }
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover,
@@ -497,7 +515,7 @@ a {
   opacity: 1 !important;
 }
 
-/* 2. Utrzymanie Twojej idealnej wielkości (8rem) */
+/* Potężne ikony (8rem) i kolorystyka */
 .carousel-control-prev-icon,
 .carousel-control-next-icon,
 .slider-arrow i,
@@ -506,16 +524,15 @@ a {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 8rem !important;
+  
+  width: 8rem !important;  /* Twoja idealna wielkość */
   height: 8rem !important;
   font-size: 8rem !important;
-  line-height: 1 !important;
-  background-image: none !important;
-  color: #F7FAFC !important;
-  transition: color 0.3s ease, transform 0.3s ease !important;
+  background-image: none !important; /* Usuwamy małe, fabryczne ikonki */
+  color: #F7FAFC !important; /* Jasna biel */
 }
 
-/* 3. Wymuszenie znaków strzałek na wypadek uszkodzenia ikon fabrycznych */
+/* Wymuszenie znaków strzałek (‹/›), jeśli fabryczne zniknęły */
 .carousel-control-prev-icon::before, .swiper-button-prev::after {
   content: '‹' !important;
   font-family: Arial, sans-serif !important;
@@ -526,34 +543,14 @@ a {
   font-family: Arial, sans-serif !important;
 }
 
-/* 4. Złoty hover i lekkie powiększenie */
+/* Złoty, lśniący hover */
 .carousel-control-prev:hover .carousel-control-prev-icon,
 .carousel-control-next:hover .carousel-control-next-icon,
 .slider-arrow:hover i,
 .swiper-button-next:hover::after,
 .swiper-button-prev:hover::after {
   color: var(--color-accent) !important;
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 12px rgba(214, 158, 46, 0.5));
-}
-
-/* ==========================================================================
-   ZWĘŻENIE I CENTROWANIE TEKSTU W HERO (Odsłonięcie strefy kliku strzałek)
-   ========================================================================== */
-.hero-content {
-  max-width: 800px !important; /* Blokada szerokości, by tekst nie rozlewał się na boki */
-  margin: 0 auto !important;   /* Idealne wycentrowanie bloku na środku */
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-  position: relative !important;
-  z-index: 1010 !important;    /* Tekst siedzi bezpiecznie pod warstwą strzałek (1020) */
-  text-align: center !important; /* Wycentrowanie samych linijek tekstu */
-}
-
-/* Opcjonalnie: jeśli opis ma dedykowaną klasę, upewniamy się, że też nie ucieka */
-.hero-content .hero-lead {
-  max-width: 650px !important;
-  margin: 1rem auto 0 auto !important;
+  filter: drop-shadow(0 0 12px rgba(214, 158, 46, 0.6));
 }
 
 /* ==========================================================================
