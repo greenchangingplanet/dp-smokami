@@ -1099,7 +1099,7 @@ a {
 .location-section {
   position: relative !important;
   width: 100% !important;
-  height: 700px !important;            /* WYSOKOŚĆ SEKCJI NA PC - wpisz np. 600px, 700px lub 800px */
+  height: 993px !important;            /* WYSOKOŚĆ SEKCJI NA PC - wpisz np. 600px, 700px lub 800px */
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
