@@ -1094,36 +1094,34 @@ a {
 }
 
 /* ==========================================================================
-   3. SEKCJA LOKALIZACJA (NATURALNE WYMIARY OBRAZKA + TREŚĆ NA GÓRZE)
+   3. SEKCJA LOKALIZACJA (WYSOKA SEKCJA + OBRAZEK NA CAŁOŚĆ)
    ========================================================================== */
 .location-section {
   position: relative !important;
-  overflow: hidden !important;
   width: 100% !important;
+  height: 700px !important;            /* WYSOKOŚĆ SEKCJI NA PC - wpisz np. 600px, 700px lub 800px */
+  overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important;
+  justify-content: flex-start !important; /* Treść zostaje na samej górze */
   align-items: center !important;
-  padding: 50px 20px 80px 20px !important; /* Odstęp treści od góry i dołu */
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  min-height: auto !important; /* Znosimy sztywne ograniczenie wysokości! */
-  background: none !important;
+  padding-top: 50px !important;        /* Odstęp tekstu od górnej krawędzi */
+  margin: 0 !important;
 }
 
-/* Obrazek tła rozciąga sekcję w pionie zgodnie ze swoimi wymiarami */
+/* Obrazek wypełnia CAŁĄ wysokość (700px) i szerokość sekcji bez rozciągania */
 .location-bg {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important; /* Kadruje zdjęcie bez rozciągania */
-  object-position: center !important;
+  object-fit: cover !important;        /* Kadruje zdjęcie tak, by wypełniło całe 700px */
+  object-position: center !important; /* Środek zdjęcia zawsze na centrum */
   z-index: 1 !important;
 }
 
-/* Lekka nakładka przyciemniająca tło */
+/* Nakładka przyciemniająca na całe zdjęcie */
 .location-overlay {
   position: absolute !important;
   top: 0 !important;
@@ -1134,7 +1132,7 @@ a {
   z-index: 2 !important;
 }
 
-/* Treść (tytuł + podpunkty) na samej górze */
+/* Tekst na górze */
 .location-content {
   position: relative !important;
   z-index: 3 !important;
@@ -1149,7 +1147,7 @@ a {
   font-size: 2.2rem !important;
   font-weight: 700 !important;
   letter-spacing: 2px !important;
-  margin-bottom: 25px !important;
+  margin-bottom: 20px !important;
   color: #FFFFFF !important;
   text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
 }
@@ -1171,25 +1169,15 @@ a {
   text-shadow: 0 1px 3px rgba(0,0,0,0.6) !important;
 }
 
-/* Zerowanie marginesu styku z poprzednią sekcją */
-.location-section, 
-.location-section + section,
-.about-us-section + .location-section {
-  margin-top: 0 !important;
-}
-
-/* Układ dla telefonów (podpunkty pionowo) */
+/* Dostosowanie na telefony */
 @media (max-width: 768px) {
   .location-section {
-    padding: 30px 15px 60px 15px !important;
-  }
-  .location-title {
-    font-size: 1.6rem !important;
-    margin-bottom: 20px !important;
+    height: 450px !important;          /* Zmniejszamy wysokość na mniejszych ekranach */
+    padding-top: 30px !important;
   }
   .location-info {
     flex-direction: column !important;
-    gap: 12px !important;
+    gap: 10px !important;
   }
 }
 
