@@ -1094,27 +1094,38 @@ a {
 }
 
 /* ==========================================================================
-   3. SEKCJA LOKALIZACJA (TŁO CSS - PEŁNA SZEROKOŚĆ I ŚWIETNA WIDOCZNOŚĆ)
+   3. SEKCJA LOKALIZACJA (100% PEŁNY OBRAZEK BEZ UCINANIA GÓRY I DOŁU)
    ========================================================================== */
 .location-section {
   position: relative !important;
   width: 100% !important;
-  min-height: 550px !important; /* Daje odpowiednią wysokość na PC */
+  
+  /* POKAZUJE 100% CAŁEGO OBRAZKA (BEZ UCINANIA GÓRY I DOŁU) */
+  background-size: contain !important; 
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+
+  /* INTEGRALNE PRZYCIEMNIENIE (0.45 = 45% czerni) */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+    url('../img/location-bg.png') !important;
+
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  justify-content: flex-start !important; /* Tekst zostaje na samej górze */
+  justify-content: flex-start !important;
   padding: 50px 20px !important;
   margin: 0 !important;
+}
 
-  /* OBRAZEK TŁA + INTEGRALNE PRZYCIEMNIENIE (0.45 = 45% czerni) */
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-    url('../img/location-bg.png') !important; /* <-- TUTAJ PODMIEŃ NAZWĘ PLIKU */
-  
-  background-size: cover !important;       /* Wypełnia 100% szerokości sekcji */
-  background-position: center top !important; /* Kadruje do góry i środka */
-  background-repeat: no-repeat !important;
+/* Wymuszenie proporcji dla PC: sekcja idealnie dostosowuje wysokość do szerokości */
+@media (min-width: 769px) {
+  .location-section {
+    /* Pozwala obrazkowi rozwinąć całą swoją wysokość */
+    min-height: auto !important; 
+    /* Domyślne proporcje szerokości do wysokości obrazu tła (np. 16/9 lub 21/9) */
+    aspect-ratio: 16 / 9 !important; 
+  }
 }
 
 /* Treść na górze */
@@ -1157,9 +1168,9 @@ a {
 /* Dostosowanie na telefony */
 @media (max-width: 768px) {
   .location-section {
-    min-height: 400px !important; /* Na telefonie sekcja jest ciut niższa */
+    background-size: cover !important; /* Na telefonie cover działa lepiej, żeby tekst miał miejsce */
+    min-height: 420px !important;
     padding: 35px 15px !important;
-    background-position: center center !important;
   }
   .location-title {
     font-size: 1.6rem !important;
@@ -1170,7 +1181,6 @@ a {
     gap: 12px !important;
   }
 }
-
 /* --- 5. OPINIE GOŚCI (Ikona cytatu i wyrównanie autora) --- */
 /* Dodanie eleganckiego cudzysłowu nad opinią */
 .testimonial-text::before {
